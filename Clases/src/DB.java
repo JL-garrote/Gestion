@@ -12,4 +12,23 @@ public class DB {
 
     public DB() throws SQLException {
     }
+
+    void insertupdatedelete(String consulta) throws SQLException {
+        state.executeUpdate(consulta);
+    }
+
+    void sacarResultados(String consulta,String columna) throws SQLException {
+        state.execute(consulta);
+
+        while (rs.next()) {
+            System.out.println(rs.getString(columna));
+        }
+    }
+
+    int igualarId (int id) throws SQLException {
+        while (rs.next()) {
+            id = rs.getInt("id");
+        }
+        return id;
+    }
 }
